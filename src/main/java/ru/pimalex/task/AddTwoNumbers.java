@@ -2,6 +2,12 @@ package ru.pimalex.task;
 
 import lombok.Data;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+import java.util.stream.Collectors;
+
 /**
  * #02 Add two numbers
  * <p>
@@ -34,6 +40,13 @@ public class AddTwoNumbers {
         ListNode l2 = new ListNode(5, new ListNode(6, new ListNode(4)));
         ListNode listNode = addTwoNumbers(l1, l2);
         System.out.println(listNode);
+
+
+        System.out.println("---здесь вспомнил, как с помощью queue обойти дерево и разложить его в список---");
+        List<ListNode> listNodes = getListListNodeWithoutChildrenFromRootNode(l1);
+        System.out.println(listNodes);
+        List<Integer> collect = listNodes.stream().map(ListNode::getVal).collect(Collectors.toList());
+        System.out.println(collect);
 
     }
 
@@ -73,6 +86,27 @@ public class AddTwoNumbers {
         }
         return result.next;
     }
+
+    private static List<ListNode> getListListNodeWithoutChildrenFromRootNode(
+            ListNode rootNode) {
+        ListNode item = new ListNode(rootNode);
+        List<ListNode> resultList = new ArrayList<>();
+        Queue<ListNode> queue = new ArrayDeque<>();
+        queue.add(item);
+        while (!queue.isEmpty()) {
+            ListNode node = queue.poll();
+            resultList.add(node);
+            if (node.getNext() != null) {
+                queue.add(node.getNext());
+            }
+        }
+        List<ListNode> sortedList =
+                resultList.stream()
+                        .peek(e -> e.setNext(null))
+                        //.sorted(Comparator.comparing(ListNode::getVal)) // можем даже отсортировать
+                        .collect(Collectors.toList());
+        return sortedList;
+    }
 }
 
 @Data
@@ -92,5 +126,11 @@ class ListNode {
     ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;
+    }
+
+    //конструктор копирования
+    public ListNode(ListNode node) {
+        this.val = node.val;
+        this.next = node.next;
     }
 }
