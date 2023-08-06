@@ -59,7 +59,9 @@ package ru.pimalex.task;
 public class PalindromeNumber {
 
     public static void main(String[] args) {
-        for (int i = 0; i < 100; i++) {
+
+        //в этом цикле хотел протестировать и посмотреть какие числа остаются после % 10
+        for (int i = 100; i < 1000; i++) {
             int x = i % 10;
             int y = i / 10;
             System.out.printf(" деление %d на 10 -> %d%n", i, y);
