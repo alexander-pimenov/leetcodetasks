@@ -1,5 +1,8 @@
 package ru.pimalex.task;
 
+import com.google.common.collect.Lists;
+import com.google.common.primitives.Chars;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -63,7 +66,6 @@ public class LongestCommonPrefix {
         char[] first = strings[0].toCharArray();
         char[] last = strings[strings.length - 1].toCharArray();
 
-
         //эти две строки только для логгирования - first
         List<Character> firstListChars = strings[0].chars().mapToObj(c -> (char) c).collect(Collectors.toList());
         System.out.printf("  получили массив символов первого слова: %s%n", firstListChars);
@@ -79,5 +81,14 @@ public class LongestCommonPrefix {
             System.out.printf("получаем результат result = %s%n", result);
         }
         return result.toString();
+    }
+
+    public static List<Character> arraysOfCharsToListOfCharacters(char[] chars) {
+        return IntStream.range(0, chars.length).mapToObj(i -> chars[i])
+                .collect(Collectors.toList());
+    }
+
+    public static List<Character> arraysOfCharsToListOfCharactersWithGuava(char[] chars) {
+        return Lists.newLinkedList(Chars.asList(chars));
     }
 }

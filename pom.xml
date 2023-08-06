@@ -21,6 +21,15 @@
             <version>1.18.24</version>
             <scope>compile</scope>
         </dependency>
+
+        <!-- Guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>32.1.2-jre</version>
+            <!-- or, for Android: -->
+            <!--            <version>32.1.2-android</version>-->
+        </dependency>
     </dependencies>
 
 </project>
