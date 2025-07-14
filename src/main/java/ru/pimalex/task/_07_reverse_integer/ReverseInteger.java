@@ -1,4 +1,4 @@
-package ru.pimalex.task;
+package ru.pimalex.task._07_reverse_integer;
 
 /**
  * #07 Reverse integer

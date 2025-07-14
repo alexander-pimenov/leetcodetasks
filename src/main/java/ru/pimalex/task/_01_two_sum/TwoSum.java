@@ -1,4 +1,4 @@
-package ru.pimalex.task;
+package ru.pimalex.task._01_two_sum;
 
 import java.util.Arrays;
 import java.util.HashMap;

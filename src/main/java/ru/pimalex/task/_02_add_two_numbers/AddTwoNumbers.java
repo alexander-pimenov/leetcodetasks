@@ -1,4 +1,4 @@
-package ru.pimalex.task;
+package ru.pimalex.task._02_add_two_numbers;
 
 import lombok.Data;
 

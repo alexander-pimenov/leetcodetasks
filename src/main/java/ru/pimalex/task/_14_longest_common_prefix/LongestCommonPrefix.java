@@ -1,4 +1,4 @@
-package ru.pimalex.task;
+package ru.pimalex.task._14_longest_common_prefix;
 
 import com.google.common.collect.Lists;
 import com.google.common.primitives.Chars;
