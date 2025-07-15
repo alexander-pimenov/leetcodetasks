@@ -29,11 +29,15 @@ public class LongestCommonPrefix {
         String[] strs1 = new String[]{"flower", "flow", "flight"};
         System.out.println(longestCommonPrefix01(strs1));
 
-        String[] strs2 = new String[]{"dog", "racecar", "car"};
-        System.out.println(longestCommonPrefix02(strs1));
+        String[] strs2 = new String[]{"dog", "racecar", "docar"};
+        System.out.println(longestCommonPrefix02(strs2));
+
+        String[] strs3 = new String[]{"sabrikosina", "sabrina", "sabula"};
+        System.out.println(longestCommonPrefix02(strs3));
     }
 
     public static String longestCommonPrefix01(String[] strings) {
+        System.out.printf("получили массив: %s%n", List.of(strings));
         //защита от NPE
         if (strings == null || strings.length == 0) {
             return "";
@@ -61,7 +65,11 @@ public class LongestCommonPrefix {
         StringBuilder result = new StringBuilder();
         Arrays.sort(strings);
         //после сортировки слова станут так:
-        //[flight, flow, flower]
+        //[flight, flow, flower] -> т.е. по убыванию. и нам остается только
+        //сравнивать совпадения символов
+        //flight
+        //flow
+        //flower
 
         char[] first = strings[0].toCharArray();
         char[] last = strings[strings.length - 1].toCharArray();
@@ -75,8 +83,10 @@ public class LongestCommonPrefix {
                 .collect(Collectors.toList());
         System.out.printf("  получили массив символов последнего слова: %s%n", listListChars);
         for (int i = 0; i < first.length; i++) {
-            if (first[i] != last[i])
+            if (first[i] != last[i]) {
+                System.out.println("не совпадают символы. выходим из цикла");
                 break;
+            }
             result.append(first[i]);
             System.out.printf("получаем результат result = %s%n", result);
         }
